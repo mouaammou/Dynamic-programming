@@ -28,8 +28,7 @@ def canSumMemo(target, array, memo=None):
 def canSum_buttom_up(target, array):
    array_result = [False for _ in range(target + 1)]
    array_result[0] = True
-   print(array_result)
-   for i in  range(target + 1):
+   for i in range(target + 1):
       if (array_result[i]):
          for num in array:
             if (i + num <= target):

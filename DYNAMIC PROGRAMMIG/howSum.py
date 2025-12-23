@@ -33,9 +33,26 @@ def howSum_memo(target, array, memo=None):
    memo[target] = None
    return None
 
-# print(howSum_memo(900, [1]))
+# print(howSum_memo(4, [1]))
 # print(howSum_memo(300, [7, 14]))
 
 # bottom up approach:
 
-# def howSum_bottom_up (target, array):
+def howSum_bottom_up(target, array):
+   table = [None for _ in range(target + 1)]
+   table[0] = []
+   for i in range(target + 1):
+      if table[i] is not None:
+         for num in array:
+            if i + num <= target:   
+               table[i + num] = table[i] + [num]
+   
+   return table[target]
+
+print("################## memoization ########################")
+print(howSum_bottom_up(5, [1]))
+print("################## bottom - up ########################")
+print(howSum_bottom_up(7, [3, 5, 4]))
+
+# # print(howSum_memo(900, [1]))
+print(howSum_bottom_up(300, [7, 14]))
