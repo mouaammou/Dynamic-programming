@@ -49,7 +49,7 @@ print("memoization -->")
 print(bestsum_memoization(2, [1, 2]))
 print(bestsum_memoization(50, [2, 1, 5, 25]))
 print(bestsum_memoization(100, [2, 1, 5, 25]))
-print(bestsum_memoization(10000, [2, 1, 5, 25]))
+print(bestsum_memoization(1000, [2, 1, 5, 25]))
 
 
 """
@@ -74,4 +74,4 @@ print("tabulation -->")
 print(best_sum_tabulation(2, [1, 2]))
 print(best_sum_tabulation(50, [2, 1, 5, 25]))
 print(best_sum_tabulation(100, [2, 1, 5, 25]))
-print(best_sum_tabulation(10000, [2, 1, 5, 25]))
+print(best_sum_tabulation(100000, [2, 1, 5, 25]))
