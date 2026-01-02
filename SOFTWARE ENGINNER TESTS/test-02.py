@@ -16,7 +16,7 @@
 # 	# num: 1, 2, 3, 4, 5
 #     for i in range(len_arr):
 #         val = abs(orderNumbers[i])
-#         if 1 <= val <= len_arr:
+        # if 1 <= val <= len_arr:
 #             index = val - 1
 #             if orderNumbers[index] > 0:
 #                 orderNumbers[index] = -orderNumbers[index]
@@ -32,13 +32,13 @@ def findSmallestMissingPositive(orderNumbers):
     while i < n:
         # Only swap if orderNumbers[i] is in [1, n] and not already in the right place
         correct_idx = orderNumbers[i] - 1
-        print("correct_Index: ", correct_idx)
-        print("index: ", i)
+        # print("correct_Index: ", correct_idx)
+        print("after swapping: ", orderNumbers)
+        # print("index: ", i)
         if 1 <= orderNumbers[i] <= n and orderNumbers[i] != orderNumbers[correct_idx]:
             orderNumbers[i], orderNumbers[correct_idx] = orderNumbers[correct_idx], orderNumbers[i]
         else:
             i += 1
-    print("after swapping: ", orderNumbers)
 
     # After sorting, the first place where orderNumbers[i] != i+1 is the answer
     for i in range(n):
