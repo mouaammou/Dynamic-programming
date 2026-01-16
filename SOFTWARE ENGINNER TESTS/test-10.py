@@ -48,27 +48,53 @@ def print_singly_linked_list(node, sep):
 #     SinglyLinkedListNode next
 #
 #
-def removeKthNodeFromEnd(head, k):
-	# Write your code here
-	if not head:
-		return head
-	fast = head
-	slow = head
-	prev = slow
-	while k > 0:
-		fast = fast.next
-		if not fast:
-			return head
-		k -= 1
+# def removeKthNodeFromEnd(head, k):
+# 	# Write your code here
+# 	if not head:
+# 		return head
+# 	fast = head
+# 	slow = head
+# 	prev = slow
+# 	while k > 0:
+# 		fast = fast.next
+# 		if not fast:
+# 			return head
+# 		k -= 1
 
-	if not fast.next: #Checks if we are removing head
-		return head.next
-	while fast.next:
-		fast = fast.next
-		prev = slow
-		slow = slow.next
-	prev.next = slow.next
-	return head	
+# 	if not fast.next: #Checks if we are removing head
+# 		return head.next
+# 	while fast.next:
+# 		fast = fast.next
+# 		prev = slow
+# 		slow = slow.next
+# 	prev.next = slow.next
+# 	return head	
+
+def removeKthNodeFromEnd(head, k):
+    fast = head
+    slow = head
+    prev = slow
+
+    if not head:
+        return head
+
+    while (k > 0):
+        fast = fast.next
+        if fast is None:
+            return head
+        k -= 1
+
+    if not fast.next:
+        return head.next
+
+    while fast.next:
+        fast = fast.next
+        prev = slow
+        slow = slow.next
+
+    if prev.next:
+        prev.next = slow.next
+    return head
 
 if __name__ == '__main__':
 	head_count = [1, 2, 3, 4, 5, 6]
