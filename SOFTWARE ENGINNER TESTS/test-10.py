@@ -96,15 +96,34 @@ def removeKthNodeFromEnd(head, k):
         prev.next = slow.next
     return head
 
+
+# def removeKthNodeFromEnd(head, k):
+# 	fast = slow = prev = head
+
+# 	while k > 0:
+# 		fast = fast.next
+# 		if not fast:
+# 			return head
+# 		k -= 1
+# 	if not fast.next:
+# 		return head.next
+# 	while fast.next:
+# 		fast = fast.next
+# 		prev = slow
+# 		slow = slow.next
+
+# 	prev.next = slow.next
+# 	return head
+
 if __name__ == '__main__':
-	head_count = [1, 2, 3, 4, 5, 6]
+	head_count = [1, 3, 7, 0, 9]
 
 	
 	head = SinglyLinkedList()
 	for num in head_count:
 		head.insert_node(num)
 
-	k = 3
+	k = 4
 	
 	result = removeKthNodeFromEnd(head.head, k)
 
