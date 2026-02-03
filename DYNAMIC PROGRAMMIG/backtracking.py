@@ -14,7 +14,7 @@ def generate_binary(n):
 
 		if len(current) == n:
 			result.append(current)
-			return 
+			return
 		
 		for bit in ['0', '1']:
 			backtracking(current + bit)
@@ -46,17 +46,16 @@ def generate_binary(n):
 # 	return result
 
 def all_subsets(array):
-    result = []
+	result = []
 
-    def backtrack(current, start):
-        result.append(current)
-        for i in range(start, len(array)):
-            backtrack(current + [array[i]], i + 1)
+	def backtrack(current, start):
+		result.append(current)
+		for i in range(start, len(array)):
+			backtrack(current + [array[i]], i + 1)
 
-    backtrack([], 0)
-    return result
-
+	backtrack([], 0)
+	return result
 
 if __name__ == "__main__":
 	# print(generate_binary(2))
-	print(all_subsets([3, 2, 1]))
+	print(all_subsets([1, 2, 3]))
