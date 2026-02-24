@@ -62,7 +62,8 @@ def remove_background(
             print(f"ℹ️ Input image exceeds {max_bytes // 1024} KB. Resizing before background removal...")
             input_image = resize_to_max_size(input_image, max_bytes=max_bytes)
 
-        session = new_session('u2net_human_seg')
+        #  session = new_session('u2net_human_seg')
+        session = new_session(model) if model else None
         output_image = remove(input_image, session=session) if session else remove(input_image)
     except Exception as e:
         print(f"❌ Background removal failed: {e}")
