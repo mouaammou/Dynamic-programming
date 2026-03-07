@@ -5,7 +5,26 @@
 # The function accepts 2D_INTEGER_ARRAY intervals as parameter.
 #
 
+# the more optimazed version from chatgpt
 def mergeHighDefinitionIntervals(intervals):
+    if not intervals:
+        return []
+
+    intervals.sort()
+    merged = [intervals[0]]
+    
+    for start, end in intervals[1:]:
+        last_end = merged[-1][1]
+        print("last_end: ", last_end)
+        if start <= last_end:
+            merged[-1][1] = max(last_end, end)
+        else:
+            merged.append([start, end])
+
+    return merged
+
+
+# def mergeHighDefinitionIntervals(intervals):
     # Write your code here
     intervals.sort()
     i = 0
@@ -35,7 +54,7 @@ def mergeHighDefinitionIntervals(intervals):
 
 if __name__ == '__main__':
 
-    intervals = [[1,10], [2,3], [4,5], [6,7]]
+    intervals = [[1,2], [2,3], [4,5], [6,7], [8,9]]
 
     result = mergeHighDefinitionIntervals(intervals)
 
