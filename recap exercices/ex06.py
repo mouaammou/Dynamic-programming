@@ -1,3 +1,6 @@
+"""Maximum Number of Non-Overlapping Intervals
+Given an array of intervals where each interval has a start and end time, return the maximum number of non-overlapping intervals."""
+
 #
 # Complete the 'maximizeNonOverlappingMeetings' function below.
 #
@@ -6,15 +9,21 @@
 #
 
 def maximizeNonOverlappingMeetings(meetings):
-    # Write your code here
-    meetings.sort(key=lambda x: x[1])
-    # for item in meetings:
-    print(meetings)
+	meetings_sorted = sorted(meetings, key=lambda x: x[1])
+	count = 1
+
+	last_end = meetings_sorted[0][1]
+	for i in range(len(meetings_sorted)):
+		if last_end <= meetings_sorted[i][0]:
+			count += 1
+			last_end = meetings_sorted[i][1]
+	
+	return count
 
 if __name__ == '__main__':
-    meetings = [[1, 2], [1, 3], [2, 3], [3, 4]]
+	meetings = [[1, 2], [2, 3]]
 
 
-    result = maximizeNonOverlappingMeetings(meetings)
+	result = maximizeNonOverlappingMeetings(meetings)
 
-    print(result)
+	print(result)
