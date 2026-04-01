@@ -12,10 +12,12 @@ def isNonTrivialRotation(s1, s2):
     if s1 == s2 or len(s1) != len(s2):
         return False
     
-    index = s1.index(s2[0])
 
     # print(s1[index:] + s1[:index])
-    if (s1[index:] + s1[:index]) == s2:
+    # for i in range(len(s1)):
+    #     if (s1[i:] + s1[:i]) == s2:
+    #         return True
+    if s2 in (s1+s1):
         return True
     return False
 
@@ -24,8 +26,9 @@ if __name__ == '__main__':
 
     s2 = "cdeab"
 
-    s1 = "aab"
-    s2 = "aba"
+    s1 = "abcd"
+    s2 = "cdab"
+
 
     result = isNonTrivialRotation(s1, s2)
 
