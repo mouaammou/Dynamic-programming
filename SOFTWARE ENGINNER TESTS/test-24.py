@@ -49,9 +49,9 @@ def hasCircularDependency(n, dependencies):
 
     print("graph: ", graph)
     print("in_degree: ", in_degree)
-    print("queue: ", queue)
     # return 
     while queue:
+        print("queue: ", queue)
         node = queue.popleft()
         visited_count += 1
         for neighbor in graph[node]:
@@ -59,10 +59,10 @@ def hasCircularDependency(n, dependencies):
             if in_degree[neighbor] == 0:
                 queue.append(neighbor)
 
-    return visited_count != n 
+    return 0 if visited_count == n else 1
 
 if __name__ == '__main__':
     n = 5
-    dependencies = [[0, 2], [2, 3], [3, 2], [4, 0]] 
+    dependencies = [[0, 2], [2, 1], [3, 2], [4, 0]] 
     result = hasCircularDependency(n, dependencies)
     print(bool(result))

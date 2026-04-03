@@ -16,6 +16,7 @@ def dfs(node):
     print(node)
 
     for child in tree[node]:
+        # print(child)
         dfs(child)
 
 dfs("A")
