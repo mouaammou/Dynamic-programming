@@ -59,7 +59,7 @@ def hasCircularDependency(n, dependencies):
             if in_degree[neighbor] == 0:
                 queue.append(neighbor)
 
-    return 0 if visited_count == n else 1
+    return visited_count != n 
 
 if __name__ == '__main__':
     n = 5
