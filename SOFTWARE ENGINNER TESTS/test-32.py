@@ -8,19 +8,46 @@
 #
 
 def findZeroSumTripletsInWindow(readings, windowSize):
-    end = windowSize
-    result = []
-    while end < len(readings):
-        k = end - 1
-        j = k - 1
-        i = j - 1
-        end += 1
-        if readings[i] + readings[j] + readings[k] == 0 and (k - i + 1) <= windowSize:
-            # print(readings[i], readings[j], readings[k])
-            result.append([readings[i], readings[j], readings[k]])
+    n = len(readings)
+    result = set()  # use set to avoid duplicates efficiently
 
+    for start in range(n):
+        end = min(start + windowSize, n)
 
-    return result
+        # extract and sort current window
+        window = readings[start:end]
+        window.sort()
+
+        # 3Sum using 2 pointers
+        for i in range(len(window) - 2):
+            # skip duplicates
+            if i > 0 and window[i] == window[i - 1]:
+                continue
+
+            left = i + 1
+            right = len(window) - 1
+
+            while left < right:
+                s = window[i] + window[left] + window[right]
+
+                if s == 0:
+                    result.add((window[i], window[left], window[right]))
+
+                    left += 1
+                    right -= 1
+
+                    # skip duplicates
+                    while left < right and window[left] == window[left - 1]:
+                        left += 1
+                    while left < right and window[right] == window[right + 1]:
+                        right -= 1
+
+                elif s < 0:
+                    left += 1
+                else:
+                    right -= 1
+
+    return [list(t) for t in result]
 
 if __name__ == '__main__':
 
